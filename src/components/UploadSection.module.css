@@ -1,0 +1,39 @@
+input,
+button {
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+  cursor: default;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+button:hover {
+  background-color: transparent !important;
+  border: 1px solid #3b2cb5;
+  color: #3b2cb5;
+  box-shadow: none !important;
+}
+
+button:focus {
+    color: #6ebdfc;
+    box-shadow: none !important;
+}
+
+button:active {
+    color: white !important;
+    box-shadow: none !important;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.subida-exitosa {
+  font-size: 32px;
+}
