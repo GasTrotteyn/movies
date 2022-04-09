@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ReactNode } from 'react'
 import getAllMovies from '../services/getAllMoviesService'
 import { Movie } from '../interfaces'
+import { Link } from 'react-router-dom'
 
 import Axios from 'axios'
 
@@ -34,6 +35,12 @@ const ListSection = ({ ...props }) => {
 	return (
 		<div className='col-md-6 col-12 d-flex align-items-center' style={{ border: 'blue 1px solid', margin: '20px' }}>
 			<div>{content}</div>
+			<Link to='/search'>
+				<button>Buscar una peli</button>
+			</Link>
+			<Link to='/'>
+				<button>Subir mis pelis</button>
+			</Link>
 		</div>
 	)
 }

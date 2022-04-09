@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Movie } from '../interfaces'
-
+import { Link } from 'react-router-dom'
 import Axios from 'axios'
 
 // interface Result {
@@ -71,6 +71,12 @@ const SearchSection = ({ ...props }) => {
 				</button>
 			</div>
 			{content}
+			<Link to='/list'>
+				<button>Ver todas las pelis</button>
+			</Link>
+			<Link to='/'>
+				<button>Subir mis pelis</button>
+			</Link>
 		</div>
 	)
 }

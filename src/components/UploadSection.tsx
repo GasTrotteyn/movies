@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import UploadService from '../services/fileUploadService'
 import fileCombineService from '../services/fileCombineService'
 import { Document } from '../interfaces'
+import { Link } from 'react-router-dom'
 
 //import classes from './UploadSection.module.css'
 
@@ -104,7 +105,7 @@ const UploadSection = ({ ...props }) => {
 	const combine = () => {
 		fileCombineService(fileName)
 			.then((resp) => {
-				setResult('se agregaron ' + (resp.data.length + 1) + ' ' + ' películas')
+				setResult('se agregaron ' + resp.data.length + ' ' + ' películas')
 			})
 			.catch((e) => {
 				console.log(e)
@@ -149,6 +150,12 @@ const UploadSection = ({ ...props }) => {
 					¡Quiero sumar esas pelis a la lista!
 				</button>
 				<h2>{result}</h2>
+				<Link to='/search'>
+					<button>Buscar una peli</button>
+				</Link>
+				<Link to='/list'>
+					<button>Ver todas las pelis</button>
+				</Link>
 			</div>
 		</div>
 	)

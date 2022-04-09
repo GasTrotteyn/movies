@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import UploadSection from './components/UploadSection'
 import SearchSection from './components/SearchSection'
@@ -6,18 +7,13 @@ import ListSection from './components/ListSection'
 function App() {
 	return (
 		<div className='App'>
-			<section className='main'>
-				<div className='container center-elements d-flex align-items-center justify-content-center'>
-					<UploadSection
-					// //setFileName={setFileName}
-					// //setCurrentStep={setCurrentStep}
-					// currentStep={1}
-					// nextHtmlId={'validation'}
-					/>
-					<SearchSection></SearchSection>
-					<ListSection></ListSection>
-				</div>
-			</section>
+			<Router>
+				<Routes>
+					<Route path='/list' element={<ListSection />} />
+					<Route path='/search' element={<SearchSection />} />
+					<Route path='/' element={<UploadSection />} />
+				</Routes>
+			</Router>
 		</div>
 	)
 }
