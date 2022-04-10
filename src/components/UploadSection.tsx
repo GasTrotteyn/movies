@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
-
 import UploadService from '../services/fileUploadService'
 import fileCombineService from '../services/fileCombineService'
 import { Document } from '../interfaces'
@@ -12,7 +11,7 @@ const UploadSection = ({ ...props }) => {
 	const [currentFile, setCurrentFile] = useState<Document | null>(null)
 	const [message, setMessage] = useState(['Elija un archivo ', 'antes de presionar "Subir Archivo"'])
 	const [status, setStatus] = useState<JSX.Element>(<></>)
-	const [loading, setLoading] = useState(false)
+	//const [loading, setLoading] = useState(false)
 	const [fileName, setFileName] = useState('')
 	const [result, setResult] = useState('')
 
@@ -42,10 +41,10 @@ const UploadSection = ({ ...props }) => {
 	}
 
 	const upload = () => {
-		setLoading(true)
+		//setLoading(true)
 		UploadService(currentFile)
 			.then((response) => {
-				setLoading(false)
+				//setLoading(false)
 				setStatus(
 					<div className='my-4 d-flex align-items-center'>
 						<strong>El archivo ha sido subido con éxito!</strong>
@@ -56,7 +55,7 @@ const UploadSection = ({ ...props }) => {
 			})
 			.catch((e) => {
 				console.log(e)
-				setLoading(false)
+				//setLoading(false)
 				setStatus(
 					<div className='my-4 d-flex align-items-center'>
 						<strong>{e?.response?.data || 'Servidor deshabilitado'}</strong>
@@ -69,7 +68,7 @@ const UploadSection = ({ ...props }) => {
 	const FileData = () => {
 		if (currentFile !== null && currentFile !== undefined) {
 			let fileRender: Document = currentFile
-			//console.log(fileRender)
+
 			return (
 				<div className='my-2'>
 					<h2 className='my-2'>Detalles:</h2>
@@ -135,15 +134,15 @@ const UploadSection = ({ ...props }) => {
 				</div>
 				<FileData />
 				<div className='px-4 d-flex justify-content-center my-3'>
-					{loading ? (
+					{/* {loading ? (
 						<div className='spinner-border text-primary d-flex justify-content-center' role='status'>
 							<span className='sr-only'>Cargando...</span>
 						</div>
-					) : (
-						<button onClick={upload} type='button' className='btn btn-primary btn-lg btn-block' disabled={!currentFile}>
-							Subir archivo
-						</button>
-					)}
+					) : ( */}
+					<button onClick={upload} type='button' className='btn btn-primary btn-lg btn-block' disabled={!currentFile}>
+						Subir archivo
+					</button>
+					{/* )} */}
 				</div>
 				<h2>{status}</h2>
 				<button onClick={combine} type='button' className='btn btn-primary btn-lg btn-block' disabled={!fileName}>
