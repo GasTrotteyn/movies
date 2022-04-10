@@ -5,8 +5,6 @@ import fileCombineService from '../services/fileCombineService'
 import { Document } from '../interfaces'
 import { Link } from 'react-router-dom'
 
-//import classes from './UploadSection.module.css'
-
 const UploadSection = () => {
 	const [currentFile, setCurrentFile] = useState<Document | null>(null)
 	const [message, setMessage] = useState(['Elija un archivo ', 'antes de presionar "Subir Archivo"'])
