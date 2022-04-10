@@ -102,7 +102,9 @@ const ListSection = ({ ...props }) => {
 					-
 				</button>
 				<input type='number' placeholder='numero de pagina' onChange={changePagHandler} value={page} />
-				<button onClick={incrementtHandler}>+</button>
+				<button onClick={incrementtHandler} disabled={page >= Math.trunc(allMovies / 10 + 1)}>
+					+
+				</button>
 			</div>
 			<div style={{ border: 'blue 1px solid', margin: '20px', padding: '20px' }}>
 				<Link to='/search'>
