@@ -43,7 +43,7 @@ const UploadSection = () => {
 		UploadService(currentFile)
 			.then((response) => {
 				setStatus(
-					<div className='my-4 d-flex align-items-center'>
+					<div>
 						<strong>El archivo ha sido subido con éxito!</strong>
 						<i style={{ color: 'green' }}></i>
 					</div>,
@@ -53,7 +53,7 @@ const UploadSection = () => {
 			.catch((e) => {
 				console.log(e)
 				setStatus(
-					<div className='my-4 d-flex align-items-center'>
+					<div>
 						<strong>{e?.response?.data || 'Servidor deshabilitado'}</strong>
 						<i style={{ color: 'red' }}></i>
 					</div>,
@@ -66,16 +66,16 @@ const UploadSection = () => {
 			let fileRender: Document = currentFile
 
 			return (
-				<div className='my-2'>
-					<h2 className='my-2'>Detalles:</h2>
-					<p className='my-2'>
+				<div>
+					<h2>Detalles:</h2>
+					<p>
 						Nombre: <i>{fileRender?.name}</i>
 					</p>
-					<p className='my-2'>
+					<p>
 						Tipo: <i>{fileRender?.type}</i>
 					</p>
 					{fileRender.lastModifiedDate && (
-						<p className='my-2'>
+						<p>
 							Última modificación: <i>{fileRender.lastModifiedDate?.toDateString()}</i>
 						</p>
 					)}
@@ -84,12 +84,8 @@ const UploadSection = () => {
 		} else {
 			return (
 				<div>
-					<p className='mt-3'>
-						<strong>
-							<i className='fas fa-exclamation mx-1 alert-icon'></i>
-							{message[0]}
-						</strong>{' '}
-						{message[1]}
+					<p>
+						<strong>{message[0]}</strong> {message[1]}
 					</p>
 					<h2>{status}</h2>
 				</div>
@@ -101,6 +97,7 @@ const UploadSection = () => {
 		fileCombineService(fileName)
 			.then((resp) => {
 				setResult('se agregaron ' + resp.data.length + ' ' + ' películas')
+				setFileName('')
 			})
 			.catch((e) => {
 				console.log(e)
@@ -109,19 +106,16 @@ const UploadSection = () => {
 	}
 
 	return (
-		<div
-			className='col-md-6 col-12 d-flex align-items-center'
-			style={{ border: 'blue 1px solid', margin: '20px', padding: '20px' }}>
+		<div style={{ border: 'blue 1px solid', margin: '20px', padding: '20px' }}>
 			<div>
-				<p className='mt-3'>
+				<p>
 					Ingrese aquí el archivo <strong>.csv </strong>que desea enviar
 				</p>
-				<div className='input-group my-2'>
-					<div className='custom-file'>
+				<div>
+					<div>
 						<input
 							onChange={selectFile}
 							type='file'
-							className='custom-file-input'
 							id='inputGroupFile04'
 							aria-describedby='inputGroupFileAddon04'
 							autoFocus={true}
@@ -129,13 +123,13 @@ const UploadSection = () => {
 					</div>
 				</div>
 				<FileData />
-				<div className='px-4 d-flex justify-content-center my-3'>
-					<button onClick={upload} type='button' className='btn btn-primary btn-lg btn-block' disabled={!currentFile}>
+				<div>
+					<button onClick={upload} type='button' disabled={!currentFile}>
 						Subir archivo
 					</button>
 				</div>
 				<h2>{status}</h2>
-				<button onClick={combine} type='button' className='btn btn-primary btn-lg btn-block' disabled={!fileName}>
+				<button onClick={combine} type='button' disabled={!fileName}>
 					¡Quiero sumar esas pelis a la lista!
 				</button>
 				<h2>{result}</h2>

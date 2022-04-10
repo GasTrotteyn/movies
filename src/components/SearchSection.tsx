@@ -48,17 +48,14 @@ const SearchSection = ({ ...props }) => {
 	}
 
 	return (
-		<div
-			className='col-md-6 col-12 d-flex align-items-center'
-			style={{ border: 'blue 1px solid', margin: '20px', padding: '20px' }}>
-			<div className='searchInput'>
+		<div style={{ border: 'blue 1px solid', margin: '20px', padding: '20px' }}>
+			<div>
 				<input
 					onChange={inputHandler}
-					className='inputInsideInput'
 					type='text'
 					value={stringSearch}
 					placeholder='Encontrá la peli que estás buscando...'></input>
-				<button onClick={search} type='button' className='btn btn-primary btn-lg btn-block'>
+				<button onClick={search} type='button'>
 					Buscar
 				</button>
 			</div>

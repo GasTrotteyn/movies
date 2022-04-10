@@ -90,7 +90,7 @@ const ListSection = ({ ...props }) => {
 	}
 
 	return (
-		<div className='col-md-6 col-12 d-flex align-items-center' style={{ border: 'blue 1px solid', margin: '20px' }}>
+		<div style={{ border: 'blue 1px solid', margin: '20px' }}>
 			<div>
 				<h2>Página</h2>
 			</div>
