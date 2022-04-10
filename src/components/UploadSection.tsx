@@ -7,11 +7,10 @@ import { Link } from 'react-router-dom'
 
 //import classes from './UploadSection.module.css'
 
-const UploadSection = ({ ...props }) => {
+const UploadSection = () => {
 	const [currentFile, setCurrentFile] = useState<Document | null>(null)
 	const [message, setMessage] = useState(['Elija un archivo ', 'antes de presionar "Subir Archivo"'])
 	const [status, setStatus] = useState<JSX.Element>(<></>)
-	//const [loading, setLoading] = useState(false)
 	const [fileName, setFileName] = useState('')
 	const [result, setResult] = useState('')
 
@@ -41,10 +40,8 @@ const UploadSection = ({ ...props }) => {
 	}
 
 	const upload = () => {
-		//setLoading(true)
 		UploadService(currentFile)
 			.then((response) => {
-				//setLoading(false)
 				setStatus(
 					<div className='my-4 d-flex align-items-center'>
 						<strong>El archivo ha sido subido con éxito!</strong>
@@ -55,7 +52,6 @@ const UploadSection = ({ ...props }) => {
 			})
 			.catch((e) => {
 				console.log(e)
-				//setLoading(false)
 				setStatus(
 					<div className='my-4 d-flex align-items-center'>
 						<strong>{e?.response?.data || 'Servidor deshabilitado'}</strong>
@@ -134,15 +130,9 @@ const UploadSection = ({ ...props }) => {
 				</div>
 				<FileData />
 				<div className='px-4 d-flex justify-content-center my-3'>
-					{/* {loading ? (
-						<div className='spinner-border text-primary d-flex justify-content-center' role='status'>
-							<span className='sr-only'>Cargando...</span>
-						</div>
-					) : ( */}
 					<button onClick={upload} type='button' className='btn btn-primary btn-lg btn-block' disabled={!currentFile}>
 						Subir archivo
 					</button>
-					{/* )} */}
 				</div>
 				<h2>{status}</h2>
 				<button onClick={combine} type='button' className='btn btn-primary btn-lg btn-block' disabled={!fileName}>

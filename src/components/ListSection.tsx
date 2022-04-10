@@ -27,14 +27,12 @@ const ListSection = ({ ...props }) => {
 
 	const changePagHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setPage(parseInt(event.target.value))
-		console.log(Math.trunc(allMovies / 10))
 		if (parseInt(event.target.value) >= 1 && parseInt(event.target.value) <= Math.trunc(allMovies / 10 + 1)) {
 			setMessage('')
 			Axios.get(process.env.REACT_APP_BASE_URL + '/moviesPag/' + parseInt(event.target.value) * 10).then((resp) => {
 				setMoviesList(resp.data)
 			})
 		} else {
-			console.log('no llamdo')
 			setMessage('número de página inválido')
 		}
 	}
@@ -88,7 +86,6 @@ const ListSection = ({ ...props }) => {
 
 	let totalOfMovies: JSX.Element | JSX.Element[] = <p>el total de pelis es cero</p>
 	if (allMovies !== 0) {
-		//console.log(allMovies)
 		totalOfMovies = <p>el total de pelis es: {allMovies}</p>
 	}
 
@@ -115,7 +112,7 @@ const ListSection = ({ ...props }) => {
 				</Link>
 			</div>
 			<div>{totalOfMovies}</div>
-			<div>{message}</div>
+			<div style={{ border: 'blue 1px solid', margin: '20px', padding: '20px', color: 'red' }}>{message}</div>
 			<div>{content}</div>
 		</div>
 	)

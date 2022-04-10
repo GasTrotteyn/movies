@@ -14,7 +14,6 @@ const SearchSection = ({ ...props }) => {
 	let content = null
 
 	const search = () => {
-		console.log(stringSearch)
 		Axios.get(process.env.REACT_APP_BASE_URL + '/movies/' + stringSearch).then((resp) => {
 			setResult(resp.data)
 		})
